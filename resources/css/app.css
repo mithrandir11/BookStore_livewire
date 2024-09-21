@@ -1,0 +1,40 @@
+/* @import 'swiper/css/bundle'; */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn-custom {
+        @apply px-2 py-1 border rounded-lg hover:bg-gray-100 duration-200;
+    }
+    
+    .btn-custom-2 {
+        @apply px-2 py-1 rounded-lg  text-primary-900 font-bold bg-primary-900 bg-opacity-10;
+    }
+
+    .hidden-scroll::-webkit-scrollbar{
+        display: none;
+    }
+    
+    /* width */
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+    @apply bg-primary-800 bg-opacity-30;
+    border-radius: 5px;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    @apply bg-primary-900 bg-opacity-80;
+    border-radius: 5px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    }
+}

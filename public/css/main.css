@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('../fonts/webfonts/Vazirmatn-FD-Regular.woff2') format('woff2'),
+         url('../fonts/webfonts/Vazirmatn-FD-Bold.woff2') format('woff2'),
+         url('../fonts/webfonts/Vazirmatn-FD-ExtraBold.woff2') format('woff2'),
+         url('../fonts/webfonts/Vazirmatn-FD-SemiBold.woff2') format('woff2'),
+         url('../fonts/ttf/Vazirmatn-FD-Regular.ttf') format('truetype');
+}
+
+body{
+    font-family: Vazirmatn;
+    box-sizing: border-box;
+}
+
+.my-shadow {
+    box-shadow: 0px 0px 10px  rgba(182, 182, 182, 0.849);
+}
+
+
+
+
+.line-show-1{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+
+
+
+
+input[type="radio"] {
+    /* appearance: none;
+    border-radius: 50%; */
+    width: 1rem;
+    height: 1rem;
+    /* @apply bg-primary-800 bg-opacity-30 border border-primary-900 border-opacity-50;
+    color: aqua !important; */
+}
+
+
+/* input[type="radio"]:checked { 
+    @apply bg-primary-900 bg-opacity-80;
+}
+
+input[type="radio"]:checked::after {
+    content: '';
+    display: block;
+    width: 0.6rem;
+    height: 0.6rem;
+    margin: 0.25rem;
+    border-radius: 50%;
+    background-color: rgb(194, 176, 149);
+} */
+
+
+
+
+
