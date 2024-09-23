@@ -14,7 +14,7 @@
             مشاهده لیست کتاب ها
         </a>
         <video  autoplay muted loop playsinline>
-            <source src="{{asset('video/animation_book.webm')}}" type="video/webm" />
+            <source src="{{custom_asset('video/animation_book.webm')}}" type="video/webm" />
         </video>
     </div>
     <livewire:book.latest/>
@@ -26,7 +26,7 @@
             مشاهده لیست کتاب ها
         </a>
         <video  autoplay muted loop playsinline>
-            <source src="{{asset('video/animation_person.webm')}}" type="video/webm" />
+            <source src="{{custom_asset('video/animation_person.webm')}}" type="video/webm" />
         </video>
     </div>
     <livewire:book.best-historical/>

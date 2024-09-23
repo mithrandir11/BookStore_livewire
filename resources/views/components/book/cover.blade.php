@@ -1,6 +1,6 @@
 <div class="grid justify-center ">
     <div class="relative w-40 h-48 lg:w-56 lg:h-72  mx-auto ">
-        <img src="{{asset('images/book4.webp')}}" class="w-full h-full object-contain" alt="Background Image">
+        <img src="{{custom_asset('images/book4.webp')}}" class="w-full h-full object-contain" alt="Background Image">
         <a href="{{route('ShowBook', [$book->id, $book->slug] )}}" wire:navigate class="absolute inset-0 m-auto w-full h-auto px-8 py-5  mr-2">
             <img src="{{$book->image}}" class=" object-cover rounded" alt="Centered Image">
         </a>

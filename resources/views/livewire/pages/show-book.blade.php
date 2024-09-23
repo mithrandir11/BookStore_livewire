@@ -97,22 +97,22 @@
     <div class="py-8">
         <div class="grid grid-cols-2 lg:grid-cols-4 text-sm lg:text-base gap-y-10 justify-around bg-primary-900 bg-opacity-10 rounded-lg py-8 ">
             <div class="text-center">
-                <img class="mx-auto" src="{{asset('images/product_icons/express-delivery.png')}}" alt="">
+                <img class="mx-auto" src="{{custom_asset('images/product_icons/express-delivery.png')}}" alt="">
                 <p class="mt-2">تحویل سریع و به‌موقع</p>
             </div>
 
             <div class="text-center">
-                <img class="mx-auto" src="{{asset('images/product_icons/protect.png')}}" alt="">
+                <img class="mx-auto" src="{{custom_asset('images/product_icons/protect.png')}}" alt="">
                 <p class="mt-2">تضمین سلامت فیزیکی کتاب‌ها</p>
             </div>
 
             <div class="text-center">
-                <img class="mx-auto" src="{{asset('images/product_icons/check-box.png')}}" alt="">
+                <img class="mx-auto" src="{{custom_asset('images/product_icons/check-box.png')}}" alt="">
                 <p class="mt-2">تنوع بی‌نظیر در انتخاب کتاب‌ها</p>
             </div>
 
             <div class="text-center">
-                <img class="mx-auto" src="{{asset('images/product_icons/call.png')}}" alt="">
+                <img class="mx-auto" src="{{custom_asset('images/product_icons/call.png')}}" alt="">
                 <p class="mt-2">پشتیبانی 24/7</p>
             </div>
             

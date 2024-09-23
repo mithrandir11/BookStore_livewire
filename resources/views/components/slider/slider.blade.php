@@ -7,10 +7,10 @@
 <div class="swiper mt-12">
     <div class="swiper-wrapper ">
         <div class="swiper-slide">
-            <img class="rounded-2xl" src="{{ asset('images/slider3.webp') }}" alt="">
+            <img class="rounded-2xl" src="{{ custom_asset('images/slider3.webp') }}" alt="">
         </div>
         <div class="swiper-slide">
-            <img class="rounded-2xl" src="{{ asset('images/slider2.webp') }}" alt="">
+            <img class="rounded-2xl" src="{{ custom_asset('images/slider2.webp') }}" alt="">
         </div>
     </div>
 

@@ -19,7 +19,7 @@
 
         <div class="text-primary-950  justify-self-center text-center">
             <h3 class="text-xl font-bold mb-2">گواهینامه ها</h3>
-            <img class="bg-white rounded-lg mt-8" src="{{asset('images/certificates/logo.png')}}" alt="">
+            <img class="bg-white rounded-lg mt-8" src="{{custom_asset('images/certificates/logo.png')}}" alt="">
         </div>
 
     </footer>

@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div>
-                <img class="h-44 lg:h-auto" src="{{asset('images/bg_book.jpg')}}" alt="">
+                <img class="h-44 lg:h-auto" src="{{custom_asset('images/bg_book.jpg')}}" alt="">
             </div>
         </div>
     </section>

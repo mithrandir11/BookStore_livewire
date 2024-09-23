@@ -3,7 +3,7 @@
         <div class="flex flex-wrap justify-between items-center mx-auto ">
 
             <a href="/" wire:navigate class="flex items-center">
-                <img src="{{asset('images/24489711_6933620.svg')}}" class="ml-3 h-20 rounded-lg" alt="Flowbite Logo" />
+                <img src="{{custom_asset('images/24489711_6933620.svg')}}" class="ml-3 h-20 rounded-lg" alt="Flowbite Logo" />
                 <span class=" text-xl font-semibold whitespace-nowrap ">فروشگاه کتاب</span>
             </a>
 
