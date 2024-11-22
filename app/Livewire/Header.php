@@ -3,16 +3,20 @@
 namespace App\Livewire;
 
 use App\Repositories\Interfaces\ICategoryRepository;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class Header extends Component
 {
-    public $categories;
     protected $categoryRepository;
     public function mount(ICategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
-        $this->categories= $this->categoryRepository->getAllCategories();
+    }
+
+    #[Computed(cache: true)]
+    public function categories(){
+        return $this->categoryRepository->getAllCategories();
     }
 
     public function logout(){

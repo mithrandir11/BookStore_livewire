@@ -8,10 +8,10 @@
         </div>
 
         <div class="space-y-2 mt-3 text-primary-950 h-64 overflow-y-auto">
-            @foreach ($publishers as $publisher)
+            @foreach ($this->publishers as $publisher)
             <div class="flex items-center gap-x-2">
-                <input wire:click="$dispatch('publisher-change', { publisher_id: {{ $publisher->id }} })" name="publisher" type="radio">
-                <label class="text-sm">{{ $publisher->name }}</label>
+                <input wire:click="$dispatch('publisher-change', { publisher_id: {{ $publisher->id }} })" name="publisher" type="radio" id="publisher_id_{{$publisher->id}}">
+                <label class="text-sm" for="publisher_id_{{$publisher->id}}">{{ $publisher->name }}</label>
             </div>
             @endforeach
         </div>

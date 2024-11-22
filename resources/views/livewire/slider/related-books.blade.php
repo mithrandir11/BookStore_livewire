@@ -6,7 +6,7 @@
 
 <div class="swiper ">
     <div class="swiper-wrapper ">
-        @foreach ($books as $book)
+        @foreach ($this->books as $book)
         <div class="swiper-slide">
             <a href="{{route('ShowBook', [$book->id, $book->slug] )}}" @click.prevent="Livewire.navigate('{{route('ShowBook', [$book->id, $book->slug] )}}')"><img class="w-28 lg:w-auto border rounded-lg" src="{{$book->image}}" alt="{{$book->image}}"></a>
         </div>

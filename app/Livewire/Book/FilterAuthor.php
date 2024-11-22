@@ -3,16 +3,20 @@
 namespace App\Livewire\Book;
 
 use App\Repositories\Interfaces\IAuthorRepository;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class FilterAuthor extends Component
 {
-    public $authors;
     protected $authorRepository;
     public function mount(IAuthorRepository $authorRepository)
     {
         $this->authorRepository = $authorRepository;
-        $this->authors = $this->authorRepository->getAllAuthors();
+    }
+
+    #[Computed(persist: true)]
+    public function authors(){
+        return $this->authorRepository->getAllAuthors();
     }
 
     public function render()

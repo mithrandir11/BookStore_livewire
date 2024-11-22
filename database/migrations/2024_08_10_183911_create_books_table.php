@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 70)->index();
-            $table->string('slug', 70)->unique();
+            $table->string('title', 150)->index();
+            $table->string('slug', 150)->unique();
             $table->unsignedBigInteger('price');
             $table->unsignedInteger('quantity'); 
             $table->string('image', 100)->nullable(); 

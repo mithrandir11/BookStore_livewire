@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Translator;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -23,4 +24,20 @@ class TranslatorFactory extends Factory
             'slug' => Str::customSlug($name),
         ];
     }
+
+//     function customSlug($name)
+// {
+//     $slug = Str::slug($name);
+//     $originalSlug = $slug;
+//     $counter = 1;
+
+//     // بررسی اینکه آیا slug تکراری است یا خیر
+//     while (Translator::where('slug', $slug)->exists()) {
+//         // اگر تکراری بود، یک عدد به انتهای آن اضافه کن
+//         $slug = $originalSlug . '-' . $counter;
+//         $counter++;
+//     }
+
+//     return $slug;
+// }
 }

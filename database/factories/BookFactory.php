@@ -27,7 +27,7 @@ class BookFactory extends Factory
             'cover5.jpg', 'cover6.jpg', 'cover7.jpg', 'cover8.jpg',
             'cover9.jpg', 'cover10.jpg', 'cover11.jpg', 'cover12.jpg',
         ];
-        $title = fake()->sentence(3);
+        $title = fake()->sentence(5);
         return [
             'title' => $title,
             'slug' => Str::slug($title),
@@ -37,7 +37,7 @@ class BookFactory extends Factory
             'description' => fake()->sentence(100),
             'author_id' => Author::inRandomOrder()->first()->id,
             'publisher_id' => Publisher::inRandomOrder()->first()->id,
-            'translator_id' => Translator::factory(),
+            'translator_id' => Translator::inRandomOrder()->first()->id,
             'category_id' => Category::inRandomOrder()->first()->id,
             'pages' => fake()->numberBetween(100, 1000),
             'published_year' => fake()->year(),

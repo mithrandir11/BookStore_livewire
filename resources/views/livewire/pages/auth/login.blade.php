@@ -33,8 +33,10 @@
                             @enderror 
                         </div>
 
-                        <button type="submit" class="flex w-full items-center justify-center text-white bg-primary-600 hover:bg-primary-700 duration-200 rounded-lg text-sm px-5 py-2.5 text-center  ">
-                            <UtilsLoding v-if="isLoading" class="ml-3"/>
+                        <button type="submit" class="flex gap-x-2 w-full items-center justify-center text-white bg-primary-600 hover:bg-primary-700 duration-200 rounded-lg text-sm px-5 py-2.5 text-center  ">
+                            <div wire:loading>
+                                <x-utils.loading />
+                            </div>
                             ورود
                         </button>
                         <p class="text-sm font-light text-gray-500 ">

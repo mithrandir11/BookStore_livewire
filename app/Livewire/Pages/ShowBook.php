@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Pages;
 
-use App\Models\Book;
+
 use App\Repositories\Interfaces\IBookRepository;
 use Livewire\Component;
 
@@ -18,7 +18,6 @@ class ShowBook extends Component
 
     public function render()
     {
-        
-        return view('livewire.pages.show-book');
+        return view('livewire.pages.show-book')->title("کتاب ".$this->book->title);
     }
 }

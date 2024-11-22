@@ -36,12 +36,14 @@
                             @error('password_confirmation') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                         </div>
 
-                        <button type="submit" class="flex w-full items-center justify-center text-white bg-primary-600 hover:bg-primary-700 duration-200 rounded-lg text-sm px-5 py-2.5 text-center  ">
-                            <UtilsLoding v-if="isLoading" class="ml-3"/>
+                        <button type="submit" class="flex gap-x-2 w-full items-center justify-center text-white bg-primary-600 hover:bg-primary-700 duration-200 rounded-lg text-sm px-5 py-2.5 text-center  ">
+                            <div wire:loading>
+                                <x-utils.loading />
+                            </div>
                             ساخت حساب
                         </button>
                         <p class="text-sm font-light text-gray-500 ">
-                            از قبل حساب کاربری دارید؟ <NuxtLink :to="{name:'login'}" class="font-medium text-primary-600 hover:underline ">وارد</NuxtLink> شوید
+                            از قبل حساب کاربری دارید؟ <a href="{{route('login')}}" wire:navigate class="font-medium text-primary-600 hover:underline ">وارد</a> شوید
                         </p>
                     </form>
                     

@@ -8,7 +8,7 @@
     </div>
 
     <div class="my-8 py-6 w-full flex max-w-full overflow-x-auto hidden-scroll lg:grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-center gap-3 lg:gap-4  rounded-2xl">
-        @foreach ($books as $book)
+        @foreach ($this->books as $book)
             <x-book.cover  :key="$book->id" :book="$book"/> 
         @endforeach
     </div>

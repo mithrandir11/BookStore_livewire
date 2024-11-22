@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             PublisherSeeder::class,
             AuthorSeeder::class,
+            TranslatorSeeder::class,
             BookSeeder::class,
             CouponSeeder::class,
             AddressSeeder::class,

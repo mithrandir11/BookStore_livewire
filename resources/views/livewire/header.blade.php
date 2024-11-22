@@ -20,15 +20,7 @@
                 <a href="{{route('login')}}" wire:navigate class="hidden lg:block font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2  border">ورود به حساب</a>
                 @endauth
 
-                <a  class="hidden lg:flex items-center rounded-lg  text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 border ">
-                    <span class="text-primary-700">( 1 )</span>
-                    <svg class="fill-primary-700 mr-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                </a>
-
-                <a class="p-2 lg:hidden inline-flex items-center">
-                    <span class="text-primary-700 text-sm">( 1 )</span>
-                    <svg class="fill-primary-700 mr-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-                </a>
+                <livewire:components.purchase.cart-icon/>
 
                 <button @click="showMobileMenu = true" data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200   " aria-controls="mobile-menu-2" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
@@ -45,7 +37,7 @@
 
         <div class="hidden lg:block bg-primary-900 bg-opacity-20  p-2 rounded-b-lg">
             <ul class="flex justify-center   lg:gap-x-24 lg:mt-0">
-                @foreach ($categories as $category)
+                @foreach ($this->categories as $category)
                 <li>
                     <a href="{{route('showCategory', [$category->id, $category->slug])}}" wire:navigate active-class="bg-primary-900 bg-opacity-20 rounded-lg px-2" class="text-primary-950"  >{{ $category->title }}</a>
                 </li>

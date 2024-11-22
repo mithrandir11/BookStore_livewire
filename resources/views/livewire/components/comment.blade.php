@@ -1,17 +1,34 @@
 <div>
     <section>
-        <form @submit.prevent="handleCreateComment" class="mb-6">
-            <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200  ">
-                <label for="comment" class="sr-only">Your comment</label>
-                <textarea v-model="form.body" id="comment" rows="6"
-                    class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none   "
-                    placeholder="نوشتن نظر..." ></textarea>
-            </div>
+        @if(session('success'))
+            <span class="text-green-500 text-sm my-3">{{ session('success') }}</span> 
+        @endif
 
-            <button type="submit" class="flex  items-center justify-center text-white bg-primary-600 hover:bg-primary-700 duration-200 rounded-lg text-sm px-5 py-2 text-center  ">
-                <UtilsLoding v-if="isLoading" class="ml-3"/>
-                ارسال نظر
-            </button>
+        <form wire:submit="createComment" class="mb-6">
+
+                @auth
+                    <textarea wire:model="body" rows="6" class="p-3 w-full text-sm border focus:ring-0 focus:outline-none rounded-lg" placeholder="نوشتن نظر..." >
+                    </textarea>
+
+                    @error('body')
+                        <span class="text-red-500 text-sm ">{{ $message }}</span> 
+                    @enderror 
+
+                    @if(session('error'))
+                        <span class="text-red-500 text-sm ">{{ session('error') }}</span> 
+                    @endif
+
+                    <button type="submit" class="flex gap-x-2 items-center justify-center text-white bg-primary-600 hover:bg-primary-700 duration-200 rounded-lg text-sm px-5 py-2 text-center  ">
+                        <div wire:loading>
+                            <x-utils.loading />
+                        </div>
+                        
+                        ارسال نظر
+                    </button>
+                @else
+                    <p class="text-gray-600 my-8">برای ثبت نظر وارد حساب خود شوید !</p>
+                @endauth
+            
         </form>
 
         @foreach ($comments as $comment)
@@ -26,7 +43,7 @@
                         <time pubdate datetime="2022-02-08" title="February 8th, 2022">{{ $comment->created_at }}</time>
                     </p>
                 </div>
-                <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
+                <button data-dropdown-toggle="dropdownComment1"
                     class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50   "
                     type="button">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
@@ -35,8 +52,7 @@
                     <span class="sr-only">Comment settings</span>
                 </button>
                 <!-- Dropdown menu -->
-                <div id="dropdownComment1"
-                    class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow  ">
+                <div class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow  ">
                     <ul class="py-1 text-sm text-gray-700 "
                         aria-labelledby="dropdownMenuIconHorizontalButton">
                         <li>

@@ -3,11 +3,12 @@
 namespace App\Livewire\Pages\Auth;
 
 use App\Models\User;
-use App\Repositories\Interfaces\IUserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title('ساخت حساب')]
 class Register extends Component
 {
     public $name,$email,$password,$password_confirmation;
@@ -30,7 +31,6 @@ class Register extends Component
         ];
 
         Auth::attempt($credentials);
-        // session()->flash('message', 'You have successfully registered & logged in!');
  
         return $this->redirectRoute('home', navigate: true);         
     }

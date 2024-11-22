@@ -6,9 +6,11 @@ use App\Repositories\Criteria\Filter;
 use App\Repositories\Criteria\Sort;
 use App\Repositories\Interfaces\IBookRepository;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+#[Title('کتاب ها')]
 class Index extends Component
 {
     use WithPagination;

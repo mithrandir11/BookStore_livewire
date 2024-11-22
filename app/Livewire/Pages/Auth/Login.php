@@ -3,10 +3,12 @@
 namespace App\Livewire\Pages\Auth;
 
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
-use function Laravel\Prompts\error;
 
+
+#[Title('ورود به حساب')]
 class Login extends Component
 {
     public $email,$password,$error;
@@ -22,7 +24,6 @@ class Login extends Component
         ];
 
         if(Auth::attempt($credentials)){
-            // session()->flash('message', 'You have successfully logged in!');
             return $this->redirectRoute('home', navigate: true);
         }else{
             $this->addError('credentials', 'اطلاعات ورود نامعتبر است.');

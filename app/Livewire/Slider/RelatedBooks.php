@@ -3,16 +3,20 @@
 namespace App\Livewire\Slider;
 
 use App\Repositories\Interfaces\IBookRepository;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class RelatedBooks extends Component
 {
-    public $books;
     protected $bookRepository;
     public function mount(IBookRepository $bookRepository)
     {
         $this->bookRepository = $bookRepository;
-        $this->books = $this->bookRepository->getLatestBooks(10);
+    }
+
+    #[Computed(persist: true)]
+    public function books(){
+        return $this->bookRepository->getLatestBooks(10);
     }
     
     public function render()
