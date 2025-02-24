@@ -1,4 +1,4 @@
-<div class="grid grid-cols-5 gap-x-8 my-8 ">
+<div class="grid grid-cols-5 gap-x-8 my-16 ">
 
     <div class="hidden lg:block col-auto  space-y-5">
         <livewire:book.filter-publisher/>
@@ -20,8 +20,8 @@
 
     <div  class="col-span-5 lg:col-span-4 ">
 
-        <div class="lg:pb-4 flex justify-between  mb-1 ">
-            <span class="hidden lg:block text-gray-700 font-bold text-xl">مرتب سازی بر اساس :</span>
+        <div class="lg:pb-4 flex justify-end items-center gap-x-6  mb-1 ">
+            <span class="hidden lg:block text-gray-700 font-bold ">مرتب سازی بر اساس :</span>
             <div class="flex self-start mx-auto lg:mx-0 gap-x-2  w-full lg:w-auto">
                 <button wire:click="setSortBy('latest')"          class="@if($sort_by === 'latest') border-primary-700 border @endif         btn-custom-2 text-sm grow">جدید ترین</button>
                 <button wire:click="setSortBy('best_seller')"     class="@if($sort_by === 'best_seller') border-primary-700 border @endif    btn-custom-2 text-sm grow">پرفروش ترین</button>

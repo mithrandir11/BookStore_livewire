@@ -8,10 +8,10 @@
                 </svg>
             </div>
             <input wire:model.live.debounce.500ms='query' type="text" id="default-search" class="block w-full py-2 lg:py-2.5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg outline-none focus:border-primary-600 " placeholder="نام کتاب ، نویسنده ، مترجم ..."  />
-            <button type="submit" class="absolute end-1.5 bottom-1.5 flex items-center justify-center  bg-gray-200 hover:bg-gray-300 duration-200 rounded-lg text-sm px-5 py-1 text-center ">
+            {{-- <button type="submit" class="absolute end-1.5 bottom-1.5 flex items-center justify-center  bg-gray-200 hover:bg-gray-300 duration-200 rounded-lg text-sm px-5 py-1 text-center ">
                 <UtilsLoding v-if="isLoading" class="ml-3"/>
                 جستجو
-            </button>
+            </button> --}}
 
 
             @if (count($books) > 0)

@@ -53,7 +53,7 @@ class ShowCategory extends Component
             'books' => $this->bookRepository->withCriteria([
                 new Sort($this->sort_by),
                 new Filter($this->filters),
-            ])->getBookByCategoryId($this->categoryId, 20)
+            ])->getBookByCategoryId($this->categoryId, 12)
         ]);
     }
 }

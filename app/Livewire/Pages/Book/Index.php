@@ -52,7 +52,7 @@ class Index extends Component
             'books' => $this->bookRepository->withCriteria([
                 new Sort($this->sort_by),
                 new Filter($this->filters),
-            ])->getAllBooks(20)
+            ])->getAllBooks(12)
         ]);
     }
 }

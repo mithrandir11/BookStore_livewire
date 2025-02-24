@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Purchase;
 
 use App\Repositories\Interfaces\IBookRepository;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -14,12 +15,13 @@ class Cart extends Component
     protected $cartItems;
 
     protected $bookRepository;
-    public function mount(IBookRepository $bookRepository)
+    public function boot(IBookRepository $bookRepository)
     {
         $this->bookRepository = $bookRepository;
         $this->getBooks();
     }
 
+    #[On('cart-updated')] 
     public function getBooks(){
         $cart = session('cart', []);
         $this->cartItems = collect($cart);

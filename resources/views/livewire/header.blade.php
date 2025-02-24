@@ -35,11 +35,11 @@
 
         </div>
 
-        <div class="hidden lg:block bg-primary-900 bg-opacity-20  p-2 rounded-b-lg">
-            <ul class="flex justify-center   lg:gap-x-24 lg:mt-0">
+        <div class="hidden lg:block bg-green-500 bg-opacity-20  p-2 rounded-b-lg">
+            <ul class="flex justify-around   lg:gap-x-24 lg:mt-0">
                 @foreach ($this->categories as $category)
                 <li>
-                    <a href="{{route('showCategory', [$category->id, $category->slug])}}" wire:navigate active-class="bg-primary-900 bg-opacity-20 rounded-lg px-2" class="text-primary-950"  >{{ $category->title }}</a>
+                    <a href="{{route('showCategory', [$category->id, $category->slug])}}" wire:navigate active-class="bg-primary-900 bg-opacity-20 rounded-lg px-2" class=""  >{{ $category->title }}</a>
                 </li>
                 @endforeach
             </ul>

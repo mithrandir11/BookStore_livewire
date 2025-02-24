@@ -1,5 +1,5 @@
 <div>
-    <section class="container mx-auto  ">
+    <section class=" mx-auto  absolute bg-white h-screen top-0 w-full right-0 p-8">
         <div class="text-left">
             <a href="{{route('home')}}" wire:navigate class="inline-flex items-center gap-x-1 btn-custom ">
                 بازگشت
