@@ -62,10 +62,10 @@ class PaymentRepository
         return $paymentGateway->getStatus($data);
     }
 
-    public function prepareVerifyProcessingData($gateway, $data)
+    public function prepareVerifyProcessingData($gateway, $data, $amount=null)
     {
         $paymentGateway = $this->factory->make($gateway, $gateway);
-        return $paymentGateway->prepareVerifyProcessingData($data);
+        return $paymentGateway->prepareVerifyProcessingData($data, $amount);
     }
 
     

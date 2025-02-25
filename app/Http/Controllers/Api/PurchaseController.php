@@ -73,9 +73,10 @@ class PurchaseController extends Controller
             return redirect()->away(env('FRONT_URL')."result?result=failed&error=".$error);
         }
         
-        $data = $this->paymentRepository->prepareVerifyProcessingData($gateway, $request);
+        $data = $this->paymentRepository->prepareVerifyProcessingData($gateway, $request, $transaction->amount);
         $response = $this->paymentRepository->verifyTransaction($gateway, $data);
         $trans_id = $this->paymentRepository->getTransId($gateway, $response);
+        dd($trans_id);
         if($this->transactionRepository->exists('trans_id', $trans_id)){
             $error = 'این تراکنش قبلا ثبت شده است';
             return redirect()->away(env('FRONT_URL')."result?result=failed&error=".$error);
@@ -113,6 +114,8 @@ class PurchaseController extends Controller
             return 'idpay';
         } elseif ($request->has('token')) {
             return 'pay';
+        } elseif ($request->has('Authority')) {
+            return 'zarinpal';
         }
         throw new \Exception('Unsupported payment gateway');
     }

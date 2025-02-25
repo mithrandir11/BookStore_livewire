@@ -2,12 +2,12 @@
     <section class="bg-white py-4 antialiased  md:py-16">
         <div class="mx-auto max-w-screen-xl ">
 
-            <PurchaseSteps/>
+            {{-- <PurchaseSteps/> --}}
             
             <h2 class="lg:text-xl font-semibold text-gray-900  ">سبد خرید شما</h2>
 
             @if ($books->count() > 0)
-                <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
+                <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8 mb-48">
                     <div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
                         <div  class=" divide-y ">
 
@@ -21,24 +21,8 @@
                                     <label for="counter-input" class="sr-only">Choose quantity:</label>
                                     <div class="flex items-center justify-between md:order-3 md:justify-end">
 
-                                        <livewire:components.purchase.add-to-cart :book_id="$book->id" />
-                                        {{-- <div class="flex items-center">
-                                            <button  type="button" id="increment-button" data-input-counter-increment="counter-input" class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100  ">
-                                                <svg class="h-2.5 w-2.5 text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                                </svg>
-                                            </button>
-
-                                            <input type="text" id="counter-input" data-input-counter class="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 " placeholder="" value="1" required />
-                                            
-
-                                            <button  type="button" id="decrement-button" data-input-counter-decrement="counter-input" 
-                                            class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 ">
-                                                <svg class="h-2.5 w-2.5 text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
-                                                </svg>
-                                            </button>
-                                        </div> --}}
+                                        <livewire:components.purchase.add-to-cart :book_id="$book->id" wire:key="cart-{{ $book->id }}"/>
+                                       
                                         <div class="text-end md:order-4 md:w-32">
                                             <p class=" font-bold text-gray-900 ">{{ $book->price }} تومان </p>
                                         </div>
@@ -89,31 +73,76 @@
                                 <div class="space-y-2">
                                     <dl class="flex items-center justify-between gap-4">
                                         <dt class="text-base font-normal text-gray-500 ">قیمت اصلی</dt>
-                                        <dd class="text-base font-medium text-gray-900 ">{{ 23 }} تومان</dd>
+                                        <dd class="text-base font-medium text-gray-900 ">{{ number_format($totalPrice) }} تومان</dd>
                                     </dl>
 
-                                    <dl v-if="discountPrice" class="flex items-center justify-between gap-4">
+                                    {{-- <dl v-if="discountPrice" class="flex items-center justify-between gap-4">
                                         <dt class="text-base font-normal text-gray-500 ">تخفیف</dt>
-                                        {{-- <dd class="text-base font-medium text-green-600">{{ discountPrice }}- تومان</dd> --}}
-                                    </dl>
+                                       
+                                    </dl> --}}
 
                                     <dl class="flex items-center justify-between gap-4">
                                         <dt class="text-base font-normal text-gray-500 ">هزینه ارسال</dt>
-                                        {{-- <dd class="text-base font-medium text-gray-900 ">{{ shippingCost }} تومان</dd> --}}
+                                        <dd class="text-base font-medium text-gray-900 ">رایگان</dd>
                                     </dl>
 
                                 </div>
 
                                 <dl class="flex items-center justify-between gap-4 border-t  pt-2 ">
-                                <dt class="text-base font-bold text-gray-900 ">قیمت کل</dt>
-                                {{-- <dd class="text-base font-bold text-gray-900 ">{{ totalPrice }} تومان</dd> --}}
+                                <dt class="text-base font-bold text-gray-900 ">مبلغ قابل پرداخت</dt>
+                                <dd class="text-base font-bold text-gray-900 ">{{ number_format($totalPrice) }} تومان</dd>
                                 </dl>
                             </div>
 
+                            <div class="space-y-4 pt-10 justify-self-start w-full">
+                                {{-- <div class="space-y-4">
+                                    <div class="flex gap-x-2 justify-center items-center  py-3 ">
+                                    <div @click="gateway = 'pay'" :class="[gateway == 'pay' ? 'border-primary-600' : '']" class="border rounded-lg cursor-pointer">
+                                            <img class="w-20 h-20 p-1" src="/images/payment_logo_pay2.png" alt="">
+                                    </div>
                         
-                            <NuxtLink :to="{name: 'shipping'}"  class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none ">مرحله بعدی</NuxtLink>
+                                    <div @click="gateway = 'idpay'" :class="[gateway == 'idpay' ? 'border-primary-600' : '']" class="border rounded-lg cursor-pointer">
+                                            <img class="w-20 h-20 p-1" src="/images/payment_logo_idpay.png" alt="">
+                                    </div>
+                                    </div>
+                                </div> --}}
+
+                            {{-- {{$selectedGateway}} --}}
+                                <div class="space-y-4">
+                                    <div class="flex gap-x-4 items-center py-3  ">
+                                        @foreach (['pay', 'idpay', 'zarinpal'] as $gateway)
+                                        <div 
+                                        wire:click="selectGateway('{{ $gateway }}')" 
+                                        class="border rounded-lg cursor-pointer p-1 transition duration-200 grow"
+                                        :class="$wire.selectedGateway === '{{ $gateway }}' ? 'border-primary-600' : 'border-gray-300'"
+                                    >
+                                        <img 
+                                            src="/images/payment_logo_{{ $gateway }}.png" 
+                                            alt="{{ Str::headline($gateway) }} Logo" 
+                                            class="w-20 h-20 object-contain"
+                                        >
+                                    </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                        
+                                @auth
+                                <button wire:click="handlePurchaseProcessing"  type="button" class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none ">
+                                    <div wire:loading wire:target="handlePurchaseProcessing" class="ml-3">
+                                        <x-utils.loading />
+                                    </div>
+                                    پرداخت و ثبت سفارش
+                                </button>
+                                @else
+                                <div class="text-sm mt-6 text-center">برای ثبت سفارش ابتدا <a href="{{route('login')}}" class="text-primary-600 mx-1 underline">وارد</a> حساب خود شوید !</div>
+                                @endauth
+                                
+                            </div>
+
+                        
+                            {{-- <a href="{{route('purchase.payment')}}" wire:navigate  class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none ">مرحله بعدی</a> --}}
                         </div>
-                        <PurchaseDiscountForm/>
+                        {{-- <PurchaseDiscountForm/> --}}
                     </div>
 
 
