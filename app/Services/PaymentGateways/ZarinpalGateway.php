@@ -4,6 +4,7 @@ namespace App\Services\PaymentGateways;
 
 use App\Repositories\Interfaces\IPaymentGatewayRepository;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Request;
 
 class ZarinpalGateway implements IPaymentGatewayRepository
 {
@@ -23,9 +24,11 @@ class ZarinpalGateway implements IPaymentGatewayRepository
     }
 
     public function getTransId($data){
-        if(isset($data['transId'])){
-            return $data['transId'];
-        }
+        dd($data->json());
+        // $authority = Request::input('Authority');
+        // if($authority){
+        //     return $authority;
+        // }
     }
 
     public function createPaymentGatewayLink($data){
@@ -36,19 +39,30 @@ class ZarinpalGateway implements IPaymentGatewayRepository
     }
 
     public function prepareCreateTransactionData($data){
+        // dd($data['order_id']);
         return [ //zarinpal
             "merchant_id"=> "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             "amount"=> $data['amount'],
             "callback_url"=> route('handleVerifyProcessing'),
-            "description"=> "خرید کتاب"
+            "description"=> "خرید کتاب",
+            "order_id" => $data['order_id']
         ];
     }
 
     public function prepareUpdateTransactionData($data){
+        // dd($data->json());
         // return $data->json()['data']['authority'];
         if(isset($data->json()['data']['authority'])){
             return [
                 "uu_id" => $data->json()['data']['authority']
+            ];
+        }
+        
+
+        if(isset($data->json()['data']['ref_id'])){
+            return [
+                "trans_id" => $data->json()['data']['ref_id'],
+                "status" => 'successful'
             ];
         }
 
@@ -70,6 +84,8 @@ class ZarinpalGateway implements IPaymentGatewayRepository
     }
 
     public function prepareVerifyProcessingData($data, $amount=null){
+        // dd($data);
+
         return [ //pay
             "merchant_id"=> "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             "amount"=> $amount,

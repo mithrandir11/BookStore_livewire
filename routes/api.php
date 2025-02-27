@@ -50,4 +50,4 @@ Route::post('/orderItem/create', [OrderItemController::class, 'createOrderItem']
 Route::get('/coupons/findByCode/{code}', [CouponController::class, 'findByCode']);
 
 Route::post('purchaseProcessing', [PurchaseController::class, 'handlePurchaseProcessing'])->middleware('auth:sanctum');
-Route::match(['get', 'post'], 'verifyProcessing', [PurchaseController::class, 'handleVerifyProcessing'])->name('handleVerifyProcessing');
+Route::match(['get', 'post'], 'verifyProcessing', [PurchaseController::class, 'handleVerifyProcessing'])->name('handleVerifyProcessing')->middleware('web');;

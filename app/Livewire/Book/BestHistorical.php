@@ -8,6 +8,7 @@ use Livewire\Component;
 
 class BestHistorical extends Component
 {
+
     protected $bookRepository;
     public function mount(IBookRepository $bookRepository)
     {
@@ -16,7 +17,7 @@ class BestHistorical extends Component
 
     #[Computed(persist: true)]
     public function books(){
-        return $this->bookRepository->getLatestBooks(10);
+        return $this->bookRepository->getBookByCategoryId(4, 10);
     }
     
     public function render()

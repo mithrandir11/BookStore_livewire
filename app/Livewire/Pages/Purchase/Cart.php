@@ -53,6 +53,7 @@ class Cart extends Component
 
     public function handlePurchaseProcessing()
     {
+        // session()->forget('cart');
         try {
             $order = $this->handleCreateOrder();
             $transaction = $this->handleCreateTransaction($order);

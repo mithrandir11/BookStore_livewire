@@ -58,34 +58,39 @@ class PurchaseController extends Controller
 
     public function handleVerifyProcessing(Request $request)
     {
-        // dd($request);
-        $gateway = $this->identifyGatewayByParams($request);
-        $is_successful = $this->paymentRepository->getStatus($gateway, $request);
-        if(!$is_successful){
-            $error = 'پرداخت ناموفق بود';
-            return redirect()->away(env('FRONT_URL')."result?result=failed&error=".$error);
+        try {
+            $gateway = $this->identifyGatewayByParams($request);
+            $is_successful = $this->paymentRepository->getStatus($gateway, $request);
+            if(!$is_successful){
+                $error = 'پرداخت ناموفق بود';
+                throw new Exception($error, 500);
+                
+                // return redirect()->back()->with('error', $error);
+            }
+    
+            $uu_id = $this->paymentRepository->getUuId($gateway, $request);
+            $transaction = $this->transactionRepository->findWhereFirst('uu_id', $uu_id);
+            if(!$transaction){
+                $error = 'تراکنش یافت نشد';
+                throw new Exception($error, 500);
+                // return redirect()->back()->with('error', $error);
+            }
+            
+            $data = $this->paymentRepository->prepareVerifyProcessingData($gateway, $request, $transaction->amount);
+            $response = $this->paymentRepository->verifyTransaction($gateway, $data);
+    
+            $transaction = $this->handleUpdateTransaction($gateway, $transaction->id, $response);
+    
+            PaymentSuccessful::dispatch($transaction);
+         
+            return redirect()->route('purchase.status')->with('success', 'پرداخت با موفقیت انجام شد');
+            
+        } catch (\Throwable $th) {
+            //throw $th;
+            // return Response::error($th->getMessage());
+            return redirect()->route('purchase.status')->with('error', $th->getMessage());
         }
-
-        $uu_id = $this->paymentRepository->getUuId($gateway, $request);
-        $transaction = $this->transactionRepository->findWhereFirst('uu_id', $uu_id);
-        if(!$transaction){
-            $error = 'تراکنش یافت نشد';
-            return redirect()->away(env('FRONT_URL')."result?result=failed&error=".$error);
-        }
-        
-        $data = $this->paymentRepository->prepareVerifyProcessingData($gateway, $request, $transaction->amount);
-        $response = $this->paymentRepository->verifyTransaction($gateway, $data);
-        $trans_id = $this->paymentRepository->getTransId($gateway, $response);
-        dd($trans_id);
-        if($this->transactionRepository->exists('trans_id', $trans_id)){
-            $error = 'این تراکنش قبلا ثبت شده است';
-            return redirect()->away(env('FRONT_URL')."result?result=failed&error=".$error);
-        }
-
-        $transaction = $this->handleUpdateTransaction($gateway, $transaction->id, $response);
-
-        PaymentSuccessful::dispatch($transaction);
-        return redirect()->away(env('FRONT_URL')."result?result=successful");
+       
     }
 
 

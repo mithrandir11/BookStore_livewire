@@ -2,7 +2,7 @@
     <nav class="flex    py-8" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
-                <a class="inline-flex items-center text-xs lg:text-sm font-medium text-gray-700 hover:text-primary-600 ">
+                <a href="{{route('home')}}" wire:navigate class="inline-flex items-center text-xs lg:text-sm font-medium text-gray-700 hover:text-primary-600 ">
                     خانه
                 </a>
             </li>
