@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Livewire\Pages;
-
+namespace App\Livewire\Pages\Book;
 
 use App\Repositories\Interfaces\IBookRepository;
 use Livewire\Component;
 
-class ShowBook extends Component
+class Show extends Component
 {
     public $book;
     protected $bookRepository;
@@ -15,9 +14,9 @@ class ShowBook extends Component
         $this->bookRepository = $bookRepository;
         $this->book = $this->bookRepository->getBookById($id);
     }
-
+    
     public function render()
     {
-        return view('livewire.pages.show-book')->title("کتاب ".$this->book->title);
+        return view('livewire.pages.book.show')->title("کتاب ".$this->book->title);
     }
 }

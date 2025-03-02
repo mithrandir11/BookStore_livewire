@@ -18,9 +18,7 @@ class BookRepository implements IBookRepository
 
     public function getAllBooks($perPage = 10)
     {
-        // return Cache::remember('books_page_' . request('page', 1), 120, function() use ($perPage) {
-            return  $this->model->paginate($perPage);
-        // });
+        return  $this->model->paginate($perPage);
     }
 
     public function getBookById($id){
@@ -43,9 +41,9 @@ class BookRepository implements IBookRepository
 
     public function getLatestBooks($limit = 10)
     {
-        // return Cache::remember("latest_books_{$limit}", 120, function() use ($limit) {
+        return Cache::remember("latest_books_{$limit}", 120, function() use ($limit) {
             return  $this->model->latest()->take($limit)->get();
-        // });
+        });
     }
 
 

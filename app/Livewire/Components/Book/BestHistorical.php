@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Book;
+namespace App\Livewire\Components\Book;
 
 use App\Repositories\Interfaces\IBookRepository;
 use Livewire\Attributes\Computed;
@@ -22,6 +22,6 @@ class BestHistorical extends Component
     
     public function render()
     {
-        return view('livewire.book.best-historical');
+        return view('livewire.components.book.best-historical');
     }
 }

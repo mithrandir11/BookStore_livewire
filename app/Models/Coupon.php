@@ -16,13 +16,5 @@ class Coupon extends Model
         return $this->hasMany(Order::class);
     }
 
-    // public function users()
-    // {
-    //     return $this->belongsToMany(User::class, 'coupon_user')->withPivot('used_at');
-    // }
-
-    // public function orders()
-    // {
-    //     return $this->belongsToMany(Order::class, 'coupon_order')->withPivot('discount_amount');
-    // }
+    
 }

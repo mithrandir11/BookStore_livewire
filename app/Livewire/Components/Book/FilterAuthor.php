@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Book;
+namespace App\Livewire\Components\Book;
 
 use App\Repositories\Interfaces\IAuthorRepository;
 use Livewire\Attributes\Computed;
@@ -21,6 +21,6 @@ class FilterAuthor extends Component
 
     public function render()
     {
-        return view('livewire.book.filter-author');
+        return view('livewire.components.book.filter-author');
     }
 }

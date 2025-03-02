@@ -25,9 +25,6 @@ class PaymentServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Event::listen(
-        //     PaymentSuccessful::class,
-        //     UpdateDiscountUsage::class
-        // );
+        
     }
 }

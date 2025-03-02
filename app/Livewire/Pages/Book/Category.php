@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Livewire\Pages;
+namespace App\Livewire\Pages\Book;
 
-use App\Models\Book;
 use App\Repositories\Criteria\Filter;
 use App\Repositories\Criteria\Sort;
 use App\Repositories\Interfaces\IBookRepository;
@@ -10,7 +9,7 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ShowCategory extends Component
+class Category extends Component
 {
     use WithPagination;
     
@@ -49,11 +48,12 @@ class ShowCategory extends Component
 
     public function render()
     {
-        return view('livewire.pages.show-category',[
+        return view('livewire.pages.book.category',[
             'books' => $this->bookRepository->withCriteria([
                 new Sort($this->sort_by),
                 new Filter($this->filters),
             ])->getBookByCategoryId($this->categoryId, 12)
         ]);
     }
+
 }

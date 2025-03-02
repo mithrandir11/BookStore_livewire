@@ -11,10 +11,6 @@ class Order extends Model
 
     protected $guarded = [];
 
-    // public function coupons()
-    // {
-    //     return $this->belongsToMany(Coupon::class, 'coupon_order')->withPivot('discount_amount');
-    // }
 
     public function coupon()
     {

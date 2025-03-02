@@ -1,8 +1,8 @@
 <div class="grid grid-cols-5 gap-x-8 my-16 ">
 
     <div class="hidden lg:block col-auto  space-y-5">
-        <livewire:book.filter-publisher/>
-        <livewire:book.filter-author/>
+        <livewire:components.book.filter-publisher/>
+        <livewire:components.book.filter-author/>
     </div>
 
     <div class="lg:hidden col-span-full mb-5  space-y-5">
@@ -12,10 +12,10 @@
             فیلتر نتایج
         </button>
 
-        {{-- <template x-if="showFilter">
-            <livewire:book.filter-publisher/>
-            <livewire:book.filter-author/>
-        </template> --}}
+        <template x-if="showFilter">
+            <livewire:components.book.filter-publisher/>
+            <livewire:components.book.filter-author/>
+        </template>
     </div>
 
     <div  class="col-span-5 lg:col-span-4 ">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Book;
+namespace App\Livewire\Components\Book;
 
 use App\Repositories\Interfaces\IBookRepository;
 use Livewire\Component;
@@ -17,6 +17,6 @@ class Latest extends Component
     
     public function render()
     {
-        return view('livewire.book.latest');
+        return view('livewire.components.book.latest');
     }
 }

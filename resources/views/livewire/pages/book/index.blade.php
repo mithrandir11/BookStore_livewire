@@ -1,8 +1,8 @@
 <div class="grid grid-cols-5 gap-x-8 my-8 ">
 
     <div class="hidden lg:block col-auto  space-y-5">
-        <livewire:book.filter-publisher/>
-        <livewire:book.filter-author/>
+        <livewire:components.book.filter-publisher/>
+        <livewire:components.book.filter-author/>
     </div>
 
     <div class="lg:hidden col-span-full mb-5  space-y-5">
