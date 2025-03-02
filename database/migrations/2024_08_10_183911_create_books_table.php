@@ -27,6 +27,8 @@ return new class extends Migration
             $table->year('published_year'); 
             $table->string('isbn', 20); 
             $table->timestamps();
+
+            $table->index('category_id');
         });
     }
 

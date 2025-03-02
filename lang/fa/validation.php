@@ -188,5 +188,6 @@ return [
 		"g-recaptcha-response" => "کپچا",
         'images' => 'تصاویر',
         'expiration_date' =>  'تاریخ پایان',
+        'body' =>  'متن',
     ],
 ];

@@ -114,7 +114,6 @@
 
     <div class="py-8">
         <h4 class="font-bold lg:text-xl mb-3">کتاب های مرتبط</h4>
-        {{-- <x-slider.related-books :books="$book->relatedBooks()"/> --}}
         <livewire:slider.related-books  />
     </div>
 

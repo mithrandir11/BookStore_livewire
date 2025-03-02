@@ -10,7 +10,6 @@ class Filter implements ICriterion
 
     public function __construct($filters)
     {
-        // $this->filters =  $filters ;
         $this->filters = is_array($filters) ? $filters : func_get_args();
     }
 

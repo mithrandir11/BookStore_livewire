@@ -51,13 +51,38 @@ class Book extends Model
             return $query->latest();
         }
 
+        // if ($sort == 'best_seller') {
+        //     return $query
+        //     ->select('books.id', 'books.title', 'books.slug', 'books.price', 'books.image', 'books.created_at', DB::raw('SUM(most_sold.quantity) as total_sales'))
+        //     ->rightJoin('order_items as most_sold', 'books.id', '=', 'most_sold.book_id')
+        //     ->groupBy('books.id', 'books.title', 'books.slug', 'books.price', 'books.image', 'books.created_at')
+        //     ->orderBy('total_sales', 'DESC');
+        // }
+
         if ($sort == 'best_seller') {
             return $query
-            ->select('books.id', 'books.title', 'books.slug', 'books.price', 'books.image', 'books.created_at', DB::raw('SUM(most_sold.quantity) as total_sales'))
-            ->rightJoin('order_items as most_sold', 'books.id', '=', 'most_sold.book_id')
-            ->groupBy('books.id', 'books.title', 'books.slug', 'books.price', 'books.image', 'books.created_at')
-            ->orderBy('total_sales', 'DESC');
+                ->select(
+                    'books.id', 
+                    'books.title', 
+                    'books.slug', 
+                    'books.price', 
+                    'books.image', 
+                    'books.created_at', 
+                    DB::raw('SUM(most_sold.quantity) as total_sales')
+                )
+                ->rightJoin('order_items as most_sold', 'books.id', '=', 'most_sold.book_id')
+                ->groupBy(
+                    'books.id', 
+                    'books.title', 
+                    'books.slug', 
+                    'books.price', 
+                    'books.image', 
+                    'books.created_at'
+                )
+                ->orderBy(DB::raw('SUM(most_sold.quantity)'), 'DESC'); // استفاده از DB::raw برای ORDER BY
         }
+
+        
 
         if ($sort == 'cheapest') {
             return $query

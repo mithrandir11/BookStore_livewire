@@ -18,7 +18,16 @@ class BookRepository implements IBookRepository
 
     public function getAllBooks($perPage = 10)
     {
-        return  $this->model->paginate($perPage);
+        return  $this->model
+        ->select(
+            'books.id', 
+            'books.title', 
+            'books.slug', 
+            'books.price', 
+            'books.image', 
+            'books.created_at'
+        )
+        ->paginate($perPage);
     }
 
     public function getBookById($id){
@@ -29,13 +38,25 @@ class BookRepository implements IBookRepository
         return $this->model->whereIn('id', $data)->get();
     }
 
+    
     public function getBookByCategoryId($id, $perPage = 10){
-        return  $this->model->where('category_id', $id)->paginate($perPage);
+        return $this->model->where('category_id', $id)
+        ->select(
+            'books.id', 
+            'books.title', 
+            'books.slug', 
+            'books.price', 
+            'books.image', 
+            'books.created_at'
+        )
+        ->paginate($perPage);
     }
 
     public function getBestSellersBooks($limit = 10)
     {
-        return $this->model->sort('best_seller')->take($limit)->get();
+        return Cache::remember("best_sellers_books_{$limit}", 120, function() use ($limit) {
+            return $this->model->sort('best_seller')->take($limit)->get();
+        });
     }
 
 

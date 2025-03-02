@@ -16,11 +16,14 @@ class Category extends Component
     public $sort_by='latest';
     public $filters=[];
     public $categoryId;
+    public $slug;
     protected $bookRepository;
-    public function mount(IBookRepository $bookRepository, $id)
+    public function mount(IBookRepository $bookRepository, $id, $slug)
     {
         $this->bookRepository = $bookRepository;
         $this->categoryId = $id;
+        $this->slug = $slug;
+        // dd($slug);
     }
 
     public function hydrate(IBookRepository $bookRepository)
@@ -53,7 +56,7 @@ class Category extends Component
                 new Sort($this->sort_by),
                 new Filter($this->filters),
             ])->getBookByCategoryId($this->categoryId, 12)
-        ]);
+        ])->title("کتاب های ". $this->slug);
     }
 
 }

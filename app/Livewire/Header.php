@@ -14,7 +14,7 @@ class Header extends Component
         $this->categoryRepository = $categoryRepository;
     }
 
-    #[Computed(cache: true)]
+    #[Computed(persist: true)]
     public function categories(){
         return $this->categoryRepository->getAllCategories();
     }

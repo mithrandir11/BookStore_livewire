@@ -40,7 +40,7 @@
                             src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
                             alt="Michael Gough">{{ $comment->user->name }}</p>
                     <p class="text-sm text-gray-600 ">
-                        <time pubdate datetime="2022-02-08" title="February 8th, 2022">{{ $comment->created_at }}</time>
+                        <time pubdate datetime="2022-02-08" title="February 8th, 2022">{{ $comment->created_at->diffForHumans() }}</time>
                     </p>
                 </div>
                 <button data-dropdown-toggle="dropdownComment1"

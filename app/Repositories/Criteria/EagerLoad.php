@@ -15,6 +15,6 @@ class EagerLoad implements ICriterion
 
     public function apply(Builder $query): Builder
     {
-        return $query->with($this->relations); // this must be called on a query builder instance
+        return $query->with($this->relations); 
     }
 }
